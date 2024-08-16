@@ -24,10 +24,10 @@
     if($respuesta->num_rows > 0) {
         while ($row = mysqli_fetch_array($respuesta)) {
             echo "<tr>";
-            echo "<td>" . $row["ID_Producto"] . "</td>";
-            echo "<td>" . $row["Descripcion_Producto"] . "</td>";
+            echo "<td>" . $row["ID_Compra"] . "</td>";
             echo "<td>" . $row["Precio"] . "</td>";
             echo "<td>" . $row["Saldo"] . "</td>";
+            echo "<td>" . $row["Descripcion"] . "</td>";
             echo "<td>" . $row["Estado"] . "</td>";
             echo "</tr>";
         }

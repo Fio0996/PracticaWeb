@@ -24,9 +24,9 @@ include_once '../Controller/registrosController.php'; ?>
                                             <thead>
                                                 <tr>
                                                     <th>Código Compra</th>
-                                                    <th>Descripción</th>
                                                     <th>Precio</th>
                                                     <th>Saldo</th>
+                                                    <th>Descripción</th>
                                                     <th>Estado</th>
                                                 </tr>
                                             </thead>
