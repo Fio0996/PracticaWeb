@@ -27,8 +27,8 @@ include_once '../Controller/registrosController.php'; ?>
                                     <form action="" method="post">
                                         <!-- dropdown solo compras estado pendiente-->
                                         <div class="form-group">
-                                        <label for="saldoAnterior">Compras</label>
-                                            <select id="compras" name="compras" class="form-control" required>
+                                        <label for="compras">Compras</label>
+                                            <select id="compras" name="compra" class="form-control" required>
                                                 <?php ConsultarCompras(); ?>
                                             </select>
                                         </div>
@@ -62,6 +62,7 @@ include_once '../Controller/registrosController.php'; ?>
     </div>
 
     <?php scripts(); ?>
+    <script src="dist/js/productos.js"></script>
 
 </body>
 

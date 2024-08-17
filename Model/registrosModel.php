@@ -1,14 +1,14 @@
 <?php include_once 'baseDatosModel.php';
-/*
-    function Registro($nombre,$monto,$tipoEjercicio)
+
+    function Registro($IdCompra,$Monto)
     {
         $conexion = AbrirBaseDatos();
-        $sentencia = "CALL Registro('$nombre','$monto','$tipoEjercicio')";
+        $sentencia = "CALL Registro('$IdCompra','$Monto')";
         $respuesta = $conexion -> query($sentencia);
         CerrarBaseDatos($conexion);
         return $respuesta;
     }
-*/
+
 
 ////Esta es para consultar los productos  
     function ObtenerDatos()

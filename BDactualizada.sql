@@ -32,7 +32,7 @@ CREATE TABLE `abonos` (
   PRIMARY KEY (`Id_Abono`),
   KEY `FK_Abonos_Principal` (`Id_Compra`),
   CONSTRAINT `FK_Abonos_Principal` FOREIGN KEY (`Id_Compra`) REFERENCES `principal` (`Id_Compra`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `abonos` (
 
 LOCK TABLES `abonos` WRITE;
 /*!40000 ALTER TABLE `abonos` DISABLE KEYS */;
+INSERT INTO `abonos` VALUES (8,2,13500.00,'2024-08-16 20:08:00'),(9,5,80.00,'2024-08-16 20:19:45'),(13,5,100.00,'2024-08-16 20:39:30'),(14,5,100.00,'2024-08-16 20:40:32');
 /*!40000 ALTER TABLE `abonos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +68,7 @@ CREATE TABLE `principal` (
 
 LOCK TABLES `principal` WRITE;
 /*!40000 ALTER TABLE `principal` DISABLE KEYS */;
-INSERT INTO `principal` VALUES (1,50000.00,50000.00,'Producto 1','Pendiente'),(2,13500.00,13500.00,'Producto 2','Pendiente'),(3,83600.00,83600.00,'Producto 3','Pendiente'),(4,1220.00,1220.00,'Producto 4','Pendiente'),(5,480.00,480.00,'Producto 5','Pendiente');
+INSERT INTO `principal` VALUES (1,50000.00,50000.00,'Producto 1','Pendiente'),(2,13500.00,0.00,'Producto 2','Cancelado'),(3,83600.00,83600.00,'Producto 3','Pendiente'),(4,1220.00,1220.00,'Producto 4','Pendiente'),(5,480.00,200.00,'Producto 5','Pendiente');
 /*!40000 ALTER TABLE `principal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,6 +128,39 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `Registro` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Registro`(
+    `pId_Compra` BIGINT(20),
+	`pMonto` DECIMAL(18,2))
+BEGIN
+    INSERT INTO abonos(Id_Compra, Monto, Fecha)
+    VALUES (pId_Compra, pMonto, NOW());
+    
+    UPDATE principal
+    SET Saldo = Saldo - pMonto
+    WHERE Id_Compra = pId_Compra;
+
+    IF (SELECT Saldo FROM principal WHERE Id_Compra = pId_Compra) = 0 THEN
+        UPDATE principal
+        SET Estado = 'Cancelado'
+        WHERE Id_Compra = pId_Compra;
+    END IF;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -137,4 +171,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-16 17:59:38
+-- Dump completed on 2024-08-16 20:55:31

@@ -1,19 +1,19 @@
 <?php include_once '../Model/registrosModel.php'; 
-//Es solo poner los nombres correctos ya el if y else estan para lo que pide el enunciado
-/*
-    if (isset($_POST["btnRegistro"])) {
-        $nombre = $_POST["nombre"];
-        $monto = $_POST["monto"];
-        $tipoEjercicio = $_POST["tipoEjercicio"];
-    
-        $respuesta = Registro($nombre, $monto, $tipoEjercicio);
-    
+
+    if(isset($_POST["btnRegistro"]))
+    {
+        $IdCompra = $_POST["compra"];
+        $Monto = $_POST["abono"];
+        
+        $respuesta = Registro($IdCompra,$Monto);
+
         if ($respuesta === true) {
             header("location: ../View/consulta.php");
         } else {
             $_POST["msj"] = "Su abono no se ha completado correctamente. Intente de nuevo!!";
         }
-    }*/
+
+    }
 
 
 //Esta es para consultar los productos   
@@ -34,7 +34,7 @@
     }
 }
 
-    // para el select que mutre solo las compras pendientes
+    // para el select que muestre solo las compras pendientes
     function ConsultarCompras()
     {
         $respuesta = ConsultarComprasBD();
@@ -44,7 +44,7 @@
         {
             while ($row = mysqli_fetch_array($respuesta)) 
             { 
-                echo "<option value=" . $row["IdCompra"] . ">" . $row["Descripcion"] . "</option>";
+                echo "<option value=" . $row["ID_Compra"] . ">" . $row["Descripcion"] . "</option>";
             }
         }
 
