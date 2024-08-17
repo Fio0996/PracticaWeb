@@ -27,8 +27,15 @@ include_once '../Controller/registrosController.php'; ?>
                                     <form action="" method="post">
                                         <!-- dropdown solo compras estado pendiente-->
                                         <div class="form-group">
+                                        <label for="saldoAnterior">Compras</label>
+                                            <select id="compras" name="compras" class="form-control" required>
+                                                <?php ConsultarCompras(); ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="saldoAnterior">Saldo Anterior</label>
-                                            <input class="form-control" type="text" id="saldoAnterior" name="saldoAnterior" placeholder="" required>
+                                            <input readOnly class="form-control" type="text" id="saldoAnterior" name="saldoAnterior" placeholder="" required>
                                         </div>
                                         <div class="form'group">
                                             <label for="abono">Abono</label>

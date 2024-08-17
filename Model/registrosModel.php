@@ -19,3 +19,15 @@
     CerrarBaseDatos($conexion);
     return $respuesta;
 }
+
+    ////Esta es para consultar las compras pendientespara el select de registro 
+    function ConsultarComprasBD()
+    {
+        $conexion = AbrirBaseDatos();
+        $sentencia = "CALL ConsultarCompras()";
+        $respuesta = $conexion -> query($sentencia);
+        CerrarBaseDatos($conexion);
+        return $respuesta;
+    }
+
+?>

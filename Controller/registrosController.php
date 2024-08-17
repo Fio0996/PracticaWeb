@@ -34,4 +34,20 @@
     }
 }
 
+    // para el select que mutre solo las compras pendientes
+    function ConsultarCompras()
+    {
+        $respuesta = ConsultarComprasBD();
+        echo "<option value='' disabled selected> Seleccione </option>";
+        
+        if($respuesta -> num_rows > 0)
+        {
+            while ($row = mysqli_fetch_array($respuesta)) 
+            { 
+                echo "<option value=" . $row["IdCompra"] . ">" . $row["Descripcion"] . "</option>";
+            }
+        }
+
+    }
+
 ?>

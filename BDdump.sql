@@ -67,7 +67,7 @@ CREATE TABLE `principal` (
 
 LOCK TABLES `principal` WRITE;
 /*!40000 ALTER TABLE `principal` DISABLE KEYS */;
-INSERT INTO `principal` VALUES (1,50000.00,50000.00,'Producto 1','Cancelado'),(2,13500.00,13500.00,'Producto 2','Pendiente'),(3,83600.00,83600.00,'Producto 3','Pendiente'),(4,1220.00,1220.00,'Producto 4','Pendiente'),(5,480.00,480.00,'Producto 5','Pendiente');
+INSERT INTO `principal` VALUES (1,50000.00,50000.00,'Producto 1','Pendiente'),(2,13500.00,13500.00,'Producto 2','Pendiente'),(3,83600.00,83600.00,'Producto 3','Pendiente'),(4,1220.00,1220.00,'Producto 4','Pendiente'),(5,480.00,480.00,'Producto 5','Pendiente');
 /*!40000 ALTER TABLE `principal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,6 +78,29 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'practicas13'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarCompras` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCompras`()
+BEGIN
+
+	SELECT  ID_Compra, Descripcion
+	FROM 	principal
+    WHERE Estado = 'Pendiente';
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ObtenerDatos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -114,4 +137,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-16 17:02:49
+-- Dump completed on 2024-08-16 17:59:38
