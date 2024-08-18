@@ -5,7 +5,7 @@ include_once '../Controller/registrosController.php'; ?>
 <html lang="en">
 <?php head(); ?>
 
-<body class="hold-transition sidebar-mini" data-background-color="dark">
+<body class="hold-transition sidebar-mini" data-background-color="light">
     <div class="wrapper">
         <?php mostrarNavBar(); ?>
         <?php mostrarSideBar(); ?>
@@ -28,7 +28,7 @@ include_once '../Controller/registrosController.php'; ?>
                                         <!-- dropdown solo compras estado pendiente-->
                                         <div class="form-group">
                                         <label for="compras">Compras</label>
-                                            <select id="compras" name="compra" class="form-control" required>
+                                            <select id="compras" name="compra" class="form-control" onchange="mostrarSaldoAnterior();" required>
                                                 <?php ConsultarCompras(); ?>
                                             </select>
                                         </div>
@@ -37,9 +37,9 @@ include_once '../Controller/registrosController.php'; ?>
                                             <label for="saldoAnterior">Saldo Anterior</label>
                                             <input readOnly class="form-control" type="text" id="saldoAnterior" name="saldoAnterior" placeholder="" required>
                                         </div>
-                                        <div class="form'group">
+                                        <div class="form-group">
                                             <label for="abono">Abono</label>
-                                            <input class="form-control" type="double" id="abono" name="abono" placeholder="" required>
+                                            <input class="form-control" type="double" id="abono" name="abono" placeholder="" required onkeyup="validarMontoAbono();" readonly>
                                         </div>
                                         <button type="submit" id="btnRegistro" name="btnRegistro" class="btn btn-primary">Abonar</button>
                                     </form>
@@ -63,6 +63,8 @@ include_once '../Controller/registrosController.php'; ?>
 
     <?php scripts(); ?>
     <script src="dist/js/productos.js"></script>
+    <script src="../View/assets/js/registro.js"></script>
+    <script src="../View/assets/js/validarAbono.js"></script>
 
 </body>
 
