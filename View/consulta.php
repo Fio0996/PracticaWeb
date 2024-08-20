@@ -5,7 +5,7 @@ include_once '../Controller/registrosController.php'; ?>
 <html lang="en">
 <?php head(); ?>
 
-<body class="hold-transition sidebar-mini" data-background-color="dark">
+<body class="hold-transition sidebar-mini" data-background-color="light">
     <div class="wrapper">
         <?php mostrarNavBar(); ?>
         <?php mostrarSideBar(); ?>
@@ -17,10 +17,10 @@ include_once '../Controller/registrosController.php'; ?>
                     <div class="row justify-content-center mt-">
                         <div class="col-md-10">
                             <div class="card">
-                                <div class="card-body"style="background-color: #538392">
-                                    <h3 class="card-title text-center" style="margin-top: 65px; background-color: #538392">Consulta de productos</h3>
+                                <div class="card-body">
+                                    <h3 class="card-title text-center" style="margin-top: 65px;">Consulta de productos</h3>
                                     <div class="table-responsive">
-                                        <table class="table table-hover table-bordered" style="background-color: #538392; color: white; margin: auto;">
+                                        <table class="table table-hover table-bordered" style="margin: auto;">
                                             <thead>
                                                 <tr>
                                                     <th>Código Compra</th>

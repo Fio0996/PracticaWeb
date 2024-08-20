@@ -50,4 +50,13 @@
 
     }
 
+    if (isset($_POST["mostrarSaldo"])) {
+        $IdCompra = $_POST["idCompra"];
+        $respuesta = consultarSaldoAnterior($IdCompra);
+        if ($respuesta->num_rows > 0) {
+            $row = mysqli_fetch_array($respuesta);
+            echo $row["Saldo"];
+        }
+    }
+
 ?>

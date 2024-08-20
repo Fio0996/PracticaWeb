@@ -19,6 +19,8 @@ function head()
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
             integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js"></script>
 
         <script>
             WebFont.load({
@@ -180,47 +182,6 @@ function mostrarSideBar()
                   <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
                   </span>
-               </li>
-               <li class="nav-item">
-                  <a data-toggle="collapse" href="#submenu">
-                    
-                  </a>
-                  <div class="collapse" id="submenu">
-                     <ul class="nav nav-collapse">
-                        <li>
-                           <a data-toggle="collapse" href="#subnav1">
-                           </a>
-                           <div class="collapse" id="subnav1">
-                              <ul class="nav nav-collapse subnav">
-                                 <li>
-                                    <a href="#">  
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="#">
-                                    </a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </li>
-                        <li>
-                           <a data-toggle="collapse" href="#subnav2">
-                           </a>
-                           <div class="collapse" id="subnav2">
-                              <ul class="nav nav-collapse subnav">
-                                 <li>
-                                    <a href="#">
-                                    </a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </li>
-                        <li>
-                           <a href="#">
-                           </a>
-                        </li>
-                     </ul>
-                  </div>
                </li>
             </ul>
          </div>
